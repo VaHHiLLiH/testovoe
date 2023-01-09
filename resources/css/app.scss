@@ -1,0 +1,157 @@
+body {
+    margin: 0;
+
+    .header-cap {
+        background-color: rgb(145, 135, 204);
+        padding: 0 10%;
+        display: flex;
+        justify-content: space-around;
+
+        img{
+            width: 100px;
+            height: 100px;
+        }
+
+        .burger-menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            margin-left: 60px;
+
+            p{
+                margin: 0;
+                margin-left: 20px;
+                font-size: 48px;
+                font-family: Chiller;
+                color: #790604;
+            }
+
+            svg{
+                color: #790604;
+            }
+        }
+
+        span{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+
+            p{
+                margin: 0;
+                margin-left: 20px;
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content{
+    display: flex;
+    flex-wrap: wrap;
+
+    .category{
+        width: 20%;
+        height: 120px;
+        align-content: center;
+        display: flex;
+
+        a{
+            margin: auto;
+            align-self: center;
+        }
+    }
+}
+
+.breadcrumb{
+    width: 100%;
+
+    span{
+        padding: 10px;
+    }
+}
+
+.category-page-container{
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    .left-panel{
+        width: 20%;
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        background-color: lightgray;
+
+        a{
+            padding: 10px;
+            text-decoration: none;
+            font-size: 22px;
+
+            &:hover{
+                text-decoration: none;
+            }
+        }
+    }
+
+    .product-content{
+        width: 100%;
+
+        h1{
+            text-align: center;
+            font-size: 32px;
+
+            &:first-letter{
+                text-transform: uppercase;
+            }
+        }
+
+        .products{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+
+            .product{
+                width: 35%;
+                max-width: 300px;
+
+                .manufacturer{
+                    color: purple;
+                    font-size: 24px;
+
+                    &:first-letter{
+                        text-transform: uppercase;
+                    }
+                }
+
+                .price{
+                    font-size: 22px;
+                    margin: auto;
+                    display: flex;
+                    justify-content: space-around;
+
+                    .oldPrice{
+                        text-decoration: line-through;
+                        color: grey;
+                    }
+
+                    .newPrice{
+                        color: red;
+                    }
+
+                    .discount{
+                        position: absolute;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,134 @@
+body {
+  margin: 0;
+}
+body .header-cap {
+  background-color: rgb(145, 135, 204);
+  padding: 0 10%;
+  display: flex;
+  justify-content: space-around;
+}
+body .header-cap img {
+  width: 100px;
+  height: 100px;
+}
+body .header-cap .burger-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 60px;
+}
+body .header-cap .burger-menu p {
+  margin: 0;
+  margin-left: 20px;
+  font-size: 48px;
+  font-family: Chiller;
+  color: #790604;
+}
+body .header-cap .burger-menu svg {
+  color: #790604;
+}
+body .header-cap span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+body .header-cap span p {
+  margin: 0;
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+}
+.content .category {
+  width: 20%;
+  height: 120px;
+  align-content: center;
+  display: flex;
+}
+.content .category a {
+  margin: auto;
+  align-self: center;
+}
+
+.breadcrumb {
+  width: 100%;
+}
+.breadcrumb span {
+  padding: 10px;
+}
+
+.category-page-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+.category-page-container .left-panel {
+  width: 20%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  background-color: lightgray;
+}
+.category-page-container .left-panel a {
+  padding: 10px;
+  text-decoration: none;
+  font-size: 22px;
+}
+.category-page-container .left-panel a:hover {
+  text-decoration: none;
+}
+.category-page-container .product-content {
+  width: 100%;
+}
+.category-page-container .product-content h1 {
+  text-align: center;
+  font-size: 32px;
+}
+.category-page-container .product-content h1:first-letter {
+  text-transform: uppercase;
+}
+.category-page-container .product-content .products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.category-page-container .product-content .products .product {
+  width: 35%;
+  max-width: 300px;
+}
+.category-page-container .product-content .products .product .manufacturer {
+  color: purple;
+  font-size: 24px;
+}
+.category-page-container .product-content .products .product .manufacturer:first-letter {
+  text-transform: uppercase;
+}
+.category-page-container .product-content .products .product .price {
+  font-size: 22px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+}
+.category-page-container .product-content .products .product .price .oldPrice {
+  text-decoration: line-through;
+  color: grey;
+}
+.category-page-container .product-content .products .product .price .newPrice {
+  color: red;
+}
+.category-page-container .product-content .products .product .price .discount {
+  position: absolute;
+}
+
