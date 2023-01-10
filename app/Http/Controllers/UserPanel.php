@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Contracts\CategoryRepository;
 use App\Http\Repositories\CategoryDBFacade;
 use App\Http\Repositories\ProductDBFacade;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegistrationRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -66,9 +68,9 @@ class UserPanel extends Controller
         return view('registration');
     }
 
-    public function createUser(Request $request)
+    public function createUser(RegistrationRequest $registrationRequest)
     {
-
+        dd($registrationRequest->all());
     }
 
     public function login()
@@ -76,9 +78,9 @@ class UserPanel extends Controller
         return view('login');
     }
 
-    public function loginUser(Request $request)
+    public function loginUser(LoginRequest $loginRequest)
     {
-
+        dd($loginRequest->all());
     }
 
     public function personalPage()
