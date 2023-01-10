@@ -20,8 +20,8 @@ class CreateProductsTable extends Migration
             $table->string('image');
             $table->text('description');
             $table->float('price')->default(0);
-            $table->float('discount_price')->nullable();
-            $table->string('brand');
+            $table->float('old_price')->nullable();
+            $table->string('brand')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();

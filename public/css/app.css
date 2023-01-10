@@ -39,6 +39,22 @@ body .header-cap span p {
   margin-left: 20px;
   font-size: 20px;
 }
+body .header-cap .registration {
+  display: flex;
+}
+body .header-cap .registration a {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+}
+body .header-cap .registration a:hover {
+  text-decoration: none;
+}
+body .header-cap .registration a svg {
+  width: 30px;
+  height: 30px;
+  margin-right: 40px;
+}
 
 .flex-container {
   display: flex;
@@ -116,7 +132,7 @@ body .header-cap span p {
   text-transform: uppercase;
 }
 .category-page-container .product-content .products .product .price {
-  font-size: 22px;
+  font-size: 18px;
   margin: auto;
   display: flex;
   justify-content: space-around;
@@ -130,5 +146,88 @@ body .header-cap span p {
 }
 .category-page-container .product-content .products .product .price .discount {
   position: absolute;
+}
+.category-page-container .product-content .nav-bar {
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+}
+.category-page-container .product-content .nav-bar svg {
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+.category-page-container .product-content .sort {
+  width: 30%;
+  margin-left: 70%;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+.category-page-container .product-content .sort img {
+  width: 80px;
+  height: 80px;
+  margin: 0 50px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background: whitesmoke;
+}
+.category-page-container .product-content .sort img.active {
+  background-color: lightgray;
+  padding: 5px;
+}
+
+.product-page-container {
+  margin: auto;
+}
+.product-page-container img {
+  margin: auto;
+  display: block;
+}
+.product-page-container h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+.product-page-container .manufacturer {
+  color: purple;
+  font-size: 22px;
+}
+.product-page-container .price {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+}
+.product-page-container .price .oldPrice {
+  text-decoration: line-through;
+  color: grey;
+}
+.product-page-container .price .newPrice {
+  color: red;
+}
+
+.registration-page {
+  margin: 60px auto;
+  padding: 60px;
+  border: 1px solid black;
+  border-radius: 12px;
+  background-color: whitesmoke;
+}
+.registration-page form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.registration-page form * {
+  margin: 10px auto;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
 }
 

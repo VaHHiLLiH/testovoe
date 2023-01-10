@@ -2,6 +2,8 @@
 
 namespace App\Http\Contracts;
 
+use App\Models\Category;
+
 interface CategoryRepository
 {
     public function getCountCategories();
@@ -11,5 +13,6 @@ interface CategoryRepository
     public function getCategoryPath(int $category_id);
 
     public function getCategoryChild(int $category_id);
-}
 
+    public function getBreadcrumbs(Category $category);
+}

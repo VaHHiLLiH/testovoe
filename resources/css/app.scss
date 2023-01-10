@@ -44,6 +44,25 @@ body {
                 font-size: 20px;
             }
         }
+        .registration{
+            display: flex;
+
+            a{
+                display: flex;
+                text-decoration: none;
+                align-items: center;
+
+                &:hover{
+                    text-decoration: none;
+                }
+
+                svg{
+                    width: 30px;
+                    height: 30px;
+                    margin-right: 40px;
+                }
+            }
+        }
     }
 }
 
@@ -133,7 +152,7 @@ body {
                 }
 
                 .price{
-                    font-size: 22px;
+                    font-size: 18px;
                     margin: auto;
                     display: flex;
                     justify-content: space-around;
@@ -153,5 +172,98 @@ body {
                 }
             }
         }
+
+        .nav-bar{
+            width: 30%;
+            display: flex;
+            justify-content: space-around;
+            margin: auto;
+
+            svg{
+                width: 50px;
+                height: 50px;
+                padding: 10px;
+                border: 1px solid black;
+                border-radius: 15px;
+            }
+        }
+
+        .sort{
+            width: 30%;
+            margin-left: 70%;
+            margin-bottom: 20px;
+            margin-top: 40px;
+
+            img{
+                width: 80px;
+                height: 80px;
+                margin: 0 50px;
+                padding: 10px;
+                border: 1px solid black;
+                border-radius: 10px;
+                background: whitesmoke;
+            }
+
+            img.active{
+                background-color: lightgray;
+                padding: 5px;
+            }
+        }
     }
+}
+.product-page-container{
+    margin: auto;
+
+    img{
+        margin: auto;
+        display: block;
+    }
+
+    h1 {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .manufacturer{
+        color: purple;
+        font-size: 22px;
+    }
+
+    .price{
+        width: 50%;
+        display: flex;
+        justify-content: space-around;
+        margin: auto;
+
+        .oldPrice{
+            text-decoration: line-through;
+            color: grey;
+        }
+
+        .newPrice{
+            color: red;
+        }
+    }
+}
+.registration-page{
+    margin: 60px auto;
+    padding: 60px;
+    border: 1px solid black;
+    border-radius: 12px;
+    background-color: whitesmoke;
+
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        *{
+            margin: 10px auto;
+        }
+    }
+}
+.links{
+    display: flex;
+    justify-content: space-between;
 }

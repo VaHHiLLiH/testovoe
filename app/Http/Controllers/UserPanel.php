@@ -28,7 +28,7 @@ class UserPanel extends Controller
         $category->update(['slug'   => Str::slug($category->name)]);*/
 
         //$category->save();
-        /*$product = Product::factory()->for(Category::factory()->create())->create();
+        /*$product = Product::factory()->for(Category::factory()->create())->count(2)->create();
         dd($product->fresh());*/
     }
 
@@ -39,51 +39,63 @@ class UserPanel extends Controller
         return view('homePage', compact('categories'));
     }
 
-    public function category(Category $category)
+    public function category(Category $category, CategoryDBFacade $categoryDBFacade, ProductDBFacade $productDBFacade)
     {
-        $class = new CategoryDBFacade();
-        $path = $class->getCategoryPath($category->id);
+        $breadcrumbs = $categoryDBFacade->getBreadcrumbs($category);
 
-        $breadcrumbs[] = [
-            'name' => 'Home',
-            'href' => route('home')
-        ];
+        $productsCategory = $productDBFacade->getPieceProductsFromCategory($category->id, 0, 5, null);
 
-        foreach ($path as $path_category) {
-            $breadcrumbs[] = [
-                'name' => $path_category->name,
-                'href' => route('showCategory', $path_category->slug)
-            ];
-        }
-
-        $breadcrumbs[] = [
-            'name' => $category->name,
-            'href' => route('showCategory', $category->slug)
-        ];
-        //dd($breadcrumbs);
-        $productRepo = new ProductDBFacade();
-
-        $productsCategory = $productRepo->getPieceProductsFromCategory($category->id, 0, 5);
-
-        foreach ($productsCategory as $key => $product) {
-
-            if (!empty($product->discount_price)) {
-                $product->discount = round(100 - ($product->discount_price / ($product->price / 100)), 2);
-            }
-        }
-        $childCategories = $class->getCategoryChild($category->id);
+        $childCategories = $categoryDBFacade->getCategoryChild($category->id);
 
         return view('categoryPage', compact('breadcrumbs', 'productsCategory', 'childCategories', 'category'));
     }
 
-    public function getProductsForUser(Request $request)
+    public function showProduct(Product $product, ProductDBFacade $productDBFacade, CategoryDBFacade $categoryDBFacade)
     {
-        var_dump('pomojka, ');
-        dd('ya tut');
+        $breadcrumbs = $productDBFacade->getBreadcrumbs(Category::find($product->category_id), $product, $categoryDBFacade);
 
-        $productRepo = new ProductDBFacade();
+        if (!empty($product->old_price)) {
+            $product->discount_value = round((100 - ($product->price / ($product->old_price / 100))), 1);
+        }
 
-        return $productRepo->getPieceProductsFromCategory($request->category_id, $request->from*5, 5);
+        return view('productPage', compact('breadcrumbs', 'product'));
     }
 
+    public function registration()
+    {
+        return view('registration');
+    }
+
+    public function createUser(Request $request)
+    {
+
+    }
+
+    public function login()
+    {
+        return view('login');
+    }
+
+    public function loginUser(Request $request)
+    {
+
+    }
+
+    public function personalPage()
+    {
+         return view('personalPage');
+    }
+
+
+
+
+    public function getProductsForUser(Request $request, ProductDBFacade $productRepo)
+    {
+        return $productRepo->getPieceProductsFromCategory($request->category_id, ($request->from-1)*5, 5, $request->sortable);
+    }
+
+    public function getMaxList(Request $request, ProductDBFacade $productDBFacade)
+    {
+        return $productDBFacade->getMaxList($request->category_id, 5);
+    }
 }

@@ -24,7 +24,18 @@ Route::get('test/', [UserPanel::class, 'test'])->name('test');
 
 Route::get('category/{category:slug}', [UserPanel::class, 'category'])->name('showCategory');
 
-Route::post('/api/getProducts/', [UserPanel::class, 'getProductsForUser']);
+Route::get('product/{product:slug}', [UserPanel::class, 'showProduct'])->name('showProduct');
 
-//Route::get('categories/{category:slug}', [UserPanel::class, 'category'])->name('showCategory');
+Route::get('registration/', [UserPanel::class, 'registration'])->name('registration');
 
+Route::post('createUser/', [UserPanel::class, 'createUser'])->name('createUser');
+
+Route::get('login/', [UserPanel::class, 'login'])->name('login');
+
+Route::post('loginUser/', [UserPanel::class, 'loginUser'])->name('loginUser');
+
+
+
+Route::post('/api/takeProducts', [UserPanel::class, 'getProductsForUser']);
+
+Route::post('/api/getMaxList', [UserPanel::class, 'getMaxList']);

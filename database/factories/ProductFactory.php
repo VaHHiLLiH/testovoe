@@ -19,7 +19,7 @@ class ProductFactory extends Factory
             'image' => $this->faker->imageUrl(300, 220),
             'description' => $this->faker->text(150),
             'price' => 0.0,
-            'discount_price' => 0.0,
+            'old_price' => 0.0,
             'brand' => $this->faker->word,
 
         ];

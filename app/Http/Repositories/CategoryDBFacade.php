@@ -3,6 +3,7 @@
 namespace App\Http\Repositories;
 
 use App\Http\Contracts\CategoryRepository;
+use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 
 class CategoryDBFacade implements CategoryRepository
@@ -33,5 +34,28 @@ class CategoryDBFacade implements CategoryRepository
             ->get();
     }
 
-}
+    public function getBreadcrumbs(Category $category)
+    {
+        $path = $this->getCategoryPath($category->id);
 
+        $breadcrumbs[] = [
+            'name' => 'Home',
+            'href' => route('home')
+        ];
+
+        foreach ($path as $path_category) {
+            $breadcrumbs[] = [
+                'name' => $path_category->name,
+                'href' => route('showCategory', $path_category->slug)
+            ];
+        }
+
+        $breadcrumbs[] = [
+            'name' => $category->name,
+            'href' => route('showCategory', $category->slug)
+        ];
+
+        return $breadcrumbs;
+    }
+
+}

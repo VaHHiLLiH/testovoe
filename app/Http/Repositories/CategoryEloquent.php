@@ -3,6 +3,7 @@
 namespace App\Http\Repositories;
 
 use App\Http\Contracts\CategoryRepository;
+use App\Models\Category;
 
 class CategoryEloquent implements CategoryRepository
 {
@@ -24,6 +25,11 @@ class CategoryEloquent implements CategoryRepository
     public function getCategoryChild(int $category_id)
     {
         // TODO: Implement getCategoryChild() method.
+    }
+
+    public function getBreadcrumbs(Category $category)
+    {
+        // TODO: Implement getBreadcrumbs() method.
     }
 }
 
