@@ -84,4 +84,65 @@ class ProductDBFacade implements ProductRepository
 
         return $breadcrumbs;
     }
+
+
+    public function getAllProducts()
+    {
+        $count = DB::table('products')
+            ->count();
+
+        $countItem = 100;
+        $currentList = 1;
+        $maxList = ceil($count/$countItem);
+
+        $allProducts = [];
+
+        while($currentList <= $maxList) {
+            $listProducts = DB::table('products')
+                ->skip(($currentList-1)*$countItem)
+                ->take($countItem)
+                ->get();
+
+            foreach ($listProducts as $product) {
+                $allProducts[] = $product;
+            }
+
+            $currentList++;
+        }
+        return $allProducts;
+    }
+
+    public function getPieceProducts($count)
+    {
+        if ($count > 100) {
+            $countItem = 100;
+        } else {
+            $countItem = $count;
+        }
+        $currentList = 1;
+        $maxList = ceil($count/$countItem);
+
+        $allProducts = [];
+
+        while($currentList <= $maxList) {
+            $listProducts = DB::table('products')
+                ->skip(($currentList-1)*$countItem)
+                ->take($countItem)
+                ->get();
+
+            foreach ($listProducts as $product) {
+                $allProducts[] = $product;
+            }
+
+            $currentList++;
+        }
+        return $allProducts;
+    }
+
+    public function getProductById($product_id)
+    {
+        return DB::table('products')
+            ->where('id', '=', $product_id)
+            ->get();
+    }
 }
