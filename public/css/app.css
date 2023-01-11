@@ -231,3 +231,32 @@ body .header-cap .registration a svg {
   justify-content: space-between;
 }
 
+.personal-page {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 50px;
+}
+.personal-page .left-panel {
+  width: 20%;
+  margin-left: 5%;
+}
+.personal-page .left-panel p {
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+}
+.personal-page .left-panel p:hover {
+  background-color: lightgray;
+}
+.personal-page .home-content {
+  width: 60%;
+}
+.personal-page .home-content div {
+  display: none;
+}
+.personal-page .home-content .active {
+  display: block;
+}
+

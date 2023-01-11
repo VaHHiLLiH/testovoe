@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Contracts\CategoryRepository;
 use App\Http\Repositories\CategoryDBFacade;
 use App\Http\Repositories\ProductDBFacade;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegistrationRequest;
+use App\Http\Services\UserTokenGenerate;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserPanel extends Controller
 {
@@ -32,6 +34,8 @@ class UserPanel extends Controller
         //$category->save();
         /*$product = Product::factory()->for(Category::factory()->create())->count(2)->create();
         dd($product->fresh());*/
+
+        Auth::logout();
     }
 
     public function index()
@@ -70,7 +74,13 @@ class UserPanel extends Controller
 
     public function createUser(RegistrationRequest $registrationRequest)
     {
-        dd($registrationRequest->all());
+        $user = User::create([
+            'login' => $registrationRequest->get('login'),
+            'email' => $registrationRequest->get('email'),
+            'password' => Hash::make($registrationRequest->get('password')),
+        ]);
+
+        return redirect()->route('login');
     }
 
     public function login()
@@ -80,12 +90,40 @@ class UserPanel extends Controller
 
     public function loginUser(LoginRequest $loginRequest)
     {
-        dd($loginRequest->all());
+        if(Auth::attempt([
+            'login' => $loginRequest->get('login'),
+            'password' => $loginRequest->get('password'),
+        ])) {
+            return redirect()->route('personalPage');
+        } else {
+            return back()->withErrors([
+                'login' => 'Допущена ошибка в логине или пароле',
+            ]);
+        }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect()->route('login');
     }
 
     public function personalPage()
     {
-         return view('personalPage');
+        $user = Auth::user();
+
+         return view('personalPage', compact('user'));
+    }
+
+    public function generateToken(UserTokenGenerate $userTokenGenerate)
+    {
+        $user = Auth::user();
+        $user->update([
+            'api_token' => $userTokenGenerate->generateApiToken(),
+        ]);
+
+        return redirect()->route('personalPage');
     }
 
 

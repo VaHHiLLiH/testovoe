@@ -26,13 +26,19 @@ Route::get('category/{category:slug}', [UserPanel::class, 'category'])->name('sh
 
 Route::get('product/{product:slug}', [UserPanel::class, 'showProduct'])->name('showProduct');
 
-Route::get('registration/', [UserPanel::class, 'registration'])->name('registration');
+Route::get('registration/', [UserPanel::class, 'registration'])->name('registration')->middleware('user.auth');
 
-Route::post('createUser/', [UserPanel::class, 'createUser'])->name('createUser');
+Route::post('createUser/', [UserPanel::class, 'createUser'])->name('createUser')->middleware('user.auth');
 
-Route::get('login/', [UserPanel::class, 'login'])->name('login');
+Route::get('login/', [UserPanel::class, 'login'])->name('login')->middleware('user.auth');
 
-Route::post('loginUser/', [UserPanel::class, 'loginUser'])->name('loginUser');
+Route::post('loginUser/', [UserPanel::class, 'loginUser'])->name('loginUser')->middleware('user.auth');
+
+Route::get('personalPage/', [UserPanel::class, 'personalPage'])->name('personalPage')->middleware('user.guest');
+
+Route::get('logout/', [UserPanel::class, 'logout'])->name('logout')->middleware('user.guest');
+
+Route::get('generateToken/', [UserPanel::class, 'generateToken'])->name('generateToken')->middleware('user.guest');
 
 
 

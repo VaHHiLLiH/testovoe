@@ -267,3 +267,37 @@ body {
     display: flex;
     justify-content: space-between;
 }
+
+.personal-page{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 50px;
+
+    .left-panel{
+        width: 20%;
+        margin-left: 5%;
+
+        p{
+            border: 1px solid black;
+            border-radius: 12px;
+            padding: 10px;
+            text-align: center;
+
+            &:hover{
+                background-color: lightgray;
+            }
+        }
+    }
+     .home-content{
+         width: 60%;
+
+         div{
+             display: none;
+         }
+
+         .active{
+             display: block;
+         }
+     }
+}

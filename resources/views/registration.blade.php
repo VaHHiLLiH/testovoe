@@ -3,15 +3,6 @@
 @section('title', 'Registration')
 
 @section('content')
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
     <div class="registration-page">
         <div class="links">
             <p class="actual-page">Registration</p>
@@ -36,7 +27,7 @@
             @enderror
             <label for="password-confirmation">Confirm password</label>
             <input id="password-confirmation" name="password_confirmation" type="password">
-            @error('password-confirmation')
+            @error('password_confirmation')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <button type="submit">Registration</button>
