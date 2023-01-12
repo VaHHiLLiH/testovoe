@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Product;
+use Illuminate\Support\Str;
 
 class ProductObserver
 {
@@ -12,9 +13,9 @@ class ProductObserver
      * @param  \App\Models\Product  $product
      * @return void
      */
-    public function created(Product $product)
+    public function creating(Product $product)
     {
-        //
+        $product->slug = Str::slug($product->name, '-', 'ru');
     }
 
     /**

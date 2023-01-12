@@ -24,8 +24,7 @@ class CheckToken
             ->get();
         if(empty($checker->all())) {
             abort(404);
-        } else {
-            return $next($request);
         }
+        return $next($request);
     }
 }

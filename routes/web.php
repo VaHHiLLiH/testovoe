@@ -41,7 +41,6 @@ Route::get('logout/', [UserPanel::class, 'logout'])->name('logout')->middleware(
 Route::get('generateToken/', [UserPanel::class, 'generateToken'])->name('generateToken')->middleware('user.guest');
 
 
-
 Route::post('/api/takeProducts', [UserPanel::class, 'getProductsForUser']);
 
 Route::post('/api/getMaxList', [UserPanel::class, 'getMaxList']);

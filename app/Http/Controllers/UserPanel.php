@@ -128,9 +128,6 @@ class UserPanel extends Controller
         return redirect()->route('personalPage');
     }
 
-
-
-
     public function getProductsForUser(Request $request, ProductRepository $productRepo)
     {
         return $productRepo->getPieceProductsFromCategory($request->category_id, ($request->from-1)*5, 5, $request->sortable);

@@ -21,10 +21,9 @@ class UserTokenGenerate
         $checker = DB::table('users')
             ->where('api_token', '=', $token)
             ->get();
-        if(empty($checker->all())) {
-            return true;
-        } else {
+        if(!empty($checker->all())) {
             return false;
         }
+        return true;
     }
 }
