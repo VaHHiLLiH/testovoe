@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Contracts\CategoryRepository;
+use App\Http\Contracts\ProductRepository;
 use App\Http\Repositories\CategoryDBFacade;
 use App\Http\Repositories\ProductDBFacade;
 use App\Http\Requests\LoginRequest;
@@ -45,7 +47,7 @@ class UserPanel extends Controller
         return view('homePage', compact('categories'));
     }
 
-    public function category(Category $category, CategoryDBFacade $categoryDBFacade, ProductDBFacade $productDBFacade)
+    public function category(Category $category, CategoryRepository $categoryDBFacade, ProductRepository $productDBFacade)
     {
         $breadcrumbs = $categoryDBFacade->getBreadcrumbs($category);
 
@@ -56,7 +58,7 @@ class UserPanel extends Controller
         return view('categoryPage', compact('breadcrumbs', 'productsCategory', 'childCategories', 'category'));
     }
 
-    public function showProduct(Product $product, ProductDBFacade $productDBFacade, CategoryDBFacade $categoryDBFacade)
+    public function showProduct(Product $product, ProductRepository $productDBFacade, CategoryRepository $categoryDBFacade)
     {
         $breadcrumbs = $productDBFacade->getBreadcrumbs(Category::find($product->category_id), $product, $categoryDBFacade);
 
@@ -129,12 +131,12 @@ class UserPanel extends Controller
 
 
 
-    public function getProductsForUser(Request $request, ProductDBFacade $productRepo)
+    public function getProductsForUser(Request $request, ProductRepository $productRepo)
     {
         return $productRepo->getPieceProductsFromCategory($request->category_id, ($request->from-1)*5, 5, $request->sortable);
     }
 
-    public function getMaxList(Request $request, ProductDBFacade $productDBFacade)
+    public function getMaxList(Request $request, ProductRepository $productDBFacade)
     {
         return $productDBFacade->getMaxList($request->category_id, 5);
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Repositories;
 
+use App\Http\Contracts\CategoryRepository;
 use App\Http\Contracts\ProductRepository;
 use App\Models\Category;
 use App\Models\Product;
@@ -73,7 +74,7 @@ class ProductDBFacade implements ProductRepository
             ->count()/$from);
     }
 
-    public function getBreadcrumbs(Category $category, Product $product, CategoryDBFacade $categoryDBFacade)
+    public function getBreadcrumbs(Category $category, Product $product, CategoryRepository $categoryDBFacade)
     {
         $breadcrumbs = $categoryDBFacade->getBreadcrumbs($category);
 

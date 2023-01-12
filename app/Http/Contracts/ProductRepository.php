@@ -16,5 +16,5 @@ interface ProductRepository
 
     public function getMaxList(int $category_id, int $from);
 
-    public function getBreadcrumbs(Category $category, Product $product, CategoryDBFacade $categoryDBFacade);
+    public function getBreadcrumbs(Category $category, Product $product, CategoryRepository $categoryDBFacade);
 }

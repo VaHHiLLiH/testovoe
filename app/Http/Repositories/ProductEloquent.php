@@ -2,6 +2,7 @@
 
 namespace App\Http\Repositories;
 
+use App\Http\Contracts\CategoryRepository;
 use App\Http\Contracts\ProductRepository;
 use App\Models\Category;
 use App\Models\Product;
@@ -28,7 +29,7 @@ class ProductEloquent implements ProductRepository
         // TODO: Implement getMaxList() method.
     }
 
-    public function getBreadcrumbs(Category $category, Product $product, CategoryDBFacade $categoryDBFacade)
+    public function getBreadcrumbs(Category $category, Product $product, CategoryRepository $categoryDBFacade)
     {
         // TODO: Implement getBreadcrumbs() method.
     }
