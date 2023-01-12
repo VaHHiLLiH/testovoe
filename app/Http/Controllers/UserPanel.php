@@ -34,10 +34,10 @@ class UserPanel extends Controller
         $category->update(['slug'   => Str::slug($category->name)]);*/
 
         //$category->save();
-        /*$product = Product::factory()->for(Category::factory()->create())->count(2)->create();
+        /*$product = Product::factory()->for(Category::factory()->create())->count(8)->create();
         dd($product->fresh());*/
 
-        Auth::logout();
+        //Auth::logout();
     }
 
     public function index()
