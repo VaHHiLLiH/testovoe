@@ -21,7 +21,7 @@ class ApiController extends Controller
         return $this->validation($request->get('token'), $productDBFacade->getAllProducts());
     }
 
-    public function getPieceProducts(Request $request, ProductDBFacade $productDBFacade, $count)
+    public function getPieceProducts(Request $request, ProductDBFacade $productDBFacade)
     {
         /*if ($this->checkToken($request->get('token'))) {
             $array['data'] = $productDBFacade->getPieceProducts($count);
@@ -30,7 +30,7 @@ class ApiController extends Controller
             $array['error'] = 'Invalid token';
             return json_encode($array);
         }*/
-        return $this->validation($request->get('token'), $productDBFacade->getPieceProducts($count));
+        return $this->validation($request->get('token'), $productDBFacade->getPieceProducts($request->get('count')));
     }
 
     public function getProductById(Request $request, ProductDBFacade $productDBFacade, $id)
