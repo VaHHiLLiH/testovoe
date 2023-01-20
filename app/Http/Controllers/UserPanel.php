@@ -90,6 +90,7 @@ class UserPanel extends Controller
         return view('login');
     }
 
+    // TODO NEED REFACTOR
     public function loginUser(LoginRequest $loginRequest)
     {
         if(Auth::attempt([
@@ -128,6 +129,7 @@ class UserPanel extends Controller
         return redirect()->route('personalPage');
     }
 
+    // @TODO need refactor replace ($request->from-1)*5 to class
     public function getProductsForUser(Request $request, ProductRepository $productRepo)
     {
         return $productRepo->getPieceProductsFromCategory($request->category_id, ($request->from-1)*5, 5, $request->sortable);
@@ -135,6 +137,8 @@ class UserPanel extends Controller
 
     public function getMaxList(Request $request, ProductRepository $productDBFacade)
     {
-        return $productDBFacade->getMaxList($request->category_id, 5);
+        return response()->json([
+            'count' => $productDBFacade->getMaxList($request->category_id, 5)
+        ]);
     }
 }

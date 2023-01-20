@@ -17,6 +17,7 @@ class UserTokenGenerate
         return $token;
     }
 
+    // TODO need refactor
     public function checkApiToken($token) {
         $checker = DB::table('users')
             ->where('api_token', '=', $token)

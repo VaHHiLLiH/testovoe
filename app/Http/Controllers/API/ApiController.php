@@ -57,6 +57,7 @@ class ApiController extends Controller
         return $data;
     }
 
+    //TODO need refactor, duplicate in UserTokenGenerate::class we able to create request rules in separate class
     public function checkToken($token)
     {
         $checker = DB::table('users')

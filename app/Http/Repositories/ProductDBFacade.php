@@ -17,6 +17,7 @@ class ProductDBFacade implements ProductRepository
             ->count();
     }
 
+    // TODO NEED REFACTOR
     public function getPieceProductsFromCategory(int $category_id, int $from, int $count, ?string $sortable)
     {
         if (empty($sortable)) {
@@ -69,6 +70,7 @@ class ProductDBFacade implements ProductRepository
 
     public function getMaxList(int $category_id, int $from)
     {
+        // TODO NEED REFACTOR
        return ceil(DB::table('products')
             ->where('category_id', '=', $category_id)
             ->count()/$from);
@@ -86,7 +88,7 @@ class ProductDBFacade implements ProductRepository
         return $breadcrumbs;
     }
 
-
+    // TODO NEED REFACTOR
     public function getAllProducts()
     {
         $count = DB::table('products')
@@ -113,6 +115,7 @@ class ProductDBFacade implements ProductRepository
         return $allProducts;
     }
 
+    // TODO NEED REFACTOR
     public function getPieceProducts($count)
     {
         if ($count > 100) {
@@ -140,6 +143,7 @@ class ProductDBFacade implements ProductRepository
         return $allProducts;
     }
 
+    // TODO NEED REFACTOR (FIRST instead GET)
     public function getProductById($product_id)
     {
         return DB::table('products')

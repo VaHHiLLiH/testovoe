@@ -21,7 +21,7 @@ class User extends Authenticatable
         'login',
         'email',
         'password',
-        'api_token',
+        'api_token', // TODO also should be in hidden
     ];
 
     /**
